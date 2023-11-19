@@ -5,7 +5,7 @@ import os
 
 FilE1 = "words.csv"
 FILE2 = "word_to_learn.csv"
-write_header = not os.path.exists(FILE2)
+
 
 current_pair = {}
 BACKGROUND_COLOR = "#B1DDC6"
@@ -33,6 +33,7 @@ def back_card(button_value):
     if button_value == 1:
         result_list.remove(current_pair)
     else:
+        write_header = not os.path.exists(FILE2)
         with open(FILE2, "a", newline="") as f:
             pandas.DataFrame([current_pair]).to_csv(f, header=write_header, index=False)
 
